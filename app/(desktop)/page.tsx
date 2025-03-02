@@ -35,10 +35,15 @@ import {
 const INITIAL_WINDOW_WIDTH = 500;
 const START_BAR_HEIGHT = 50;
 
+// Update in app/(desktop)/page.tsx
 const Wrapper = styled.div`
   box-sizing: border-box;
   visibility: visible !important;
   background: ${({ theme }) => theme.desktopBackground};
+  background-image: url('/icons/Background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   height: 100dvh;
   .close-icon {
     display: inline-block;
@@ -101,7 +106,84 @@ const Wrapper = styled.div`
     -webkit-clip-path: polygon(100% 0px, 0px 100%, 100% 100%);
     clip-path: polygon(100% 0px, 0px 100%, 100% 100%);
   }
-`;
+
+  /* Media queries for responsive background on different screens */
+  @media (max-width: 768px) {
+    background-size: auto 100%;
+  }
+  
+  @media (max-width: 480px) {
+    background-position: left center;
+  }
+`
+
+// const Wrapper = styled.div`
+//   box-sizing: border-box;
+//   visibility: visible !important;
+//   background: ${({ theme }) => theme.desktopBackground};
+//   height: 100dvh;
+//   .close-icon {
+//     display: inline-block;
+//     width: 16px;
+//     height: 16px;
+//     margin-left: -1px;
+//     margin-top: -1px;
+//     transform: rotateZ(45deg);
+//     position: relative;
+//     &:before,
+//     &:after {
+//       content: "";
+//       position: absolute;
+//       background: ${({ theme }) => theme.materialText};
+//     }
+//     &:before {
+//       height: 100%;
+//       width: 3px;
+//       left: 50%;
+//       transform: translateX(-50%);
+//     }
+//     &:after {
+//       height: 3px;
+//       width: 100%;
+//       left: 0px;
+//       top: 50%;
+//       transform: translateY(-50%);
+//     }
+//   }
+
+//   .resize-handle-wrapper {
+//     position: absolute;
+//     bottom: 10px;
+//     right: 10px;
+//     width: 35px;
+//     height: 25px;
+//     text-align: right;
+//     cursor: nwse-resize;
+//   }
+
+//   .resize-handle {
+//     display: inline-block;
+//     width: 25px;
+//     height: 25px;
+//     background-image: linear-gradient(
+//       135deg,
+//       #fefefe 16.67%,
+//       #c6c6c6 16.67%,
+//       #c6c6c6 33.33%,
+//       #848584 33.33%,
+//       #848584 50%,
+//       #fefefe 50%,
+//       #fefefe 66.67%,
+//       #c6c6c6 66.67%,
+//       #c6c6c6 83.33%,
+//       #848584 83.33%,
+//       #848584 100%
+//     );
+//     background-size: 8.49px 8.49px;
+//     -webkit-clip-path: polygon(100% 0px, 0px 100%, 100% 100%);
+//     clip-path: polygon(100% 0px, 0px 100%, 100% 100%);
+//   }
+// `;
 
 export default function Home() {
   const [chats, setChats] = useState<
