@@ -40,7 +40,7 @@ const Wrapper = styled.div`
   box-sizing: border-box;
   visibility: visible !important;
   background: ${({ theme }) => theme.desktopBackground};
-  background-image: url('/icons/Background.png');
+  background-image: url("/Background.jpeg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -111,11 +111,11 @@ const Wrapper = styled.div`
   @media (max-width: 768px) {
     background-size: auto 100%;
   }
-  
+
   @media (max-width: 480px) {
     background-position: left center;
   }
-`
+`;
 
 // const Wrapper = styled.div`
 //   box-sizing: border-box;
@@ -239,7 +239,7 @@ export default function Home() {
         initialX: getRandomInt(0, window.innerWidth - initialWidth),
         initialY: getRandomInt(
           0,
-          window.innerHeight - initialHeight - START_BAR_HEIGHT,
+          window.innerHeight - initialHeight - START_BAR_HEIGHT
         ),
         focused: true,
       },
@@ -395,7 +395,7 @@ function ChatWindow({
         },
       });
     },
-    [modelId, handleSubmit],
+    [modelId, handleSubmit]
   );
 
   const handleReset = useCallback(() => {
@@ -412,7 +412,7 @@ function ChatWindow({
 
     const offSubmit = on("submit", () => {
       handleSubmitWrapped({
-        preventDefault: () => { },
+        preventDefault: () => {},
       });
     });
 
@@ -743,7 +743,7 @@ function getInitialWindowSize() {
 
   const initialHeight = Math.min(
     window.innerHeight - 50,
-    INITIAL_WINDOW_WIDTH * 0.8,
+    INITIAL_WINDOW_WIDTH * 0.8
   );
 
   return { initialWidth, initialHeight };
@@ -762,12 +762,12 @@ function useEvents() {
 
   const on = useCallback((event: string, callback: (detail: any) => void) => {
     listeners.current[event] = (listeners.current[event] || []).concat(
-      callback,
+      callback
     );
 
     return () => {
       listeners.current[event] = (listeners.current[event] || []).filter(
-        (listener) => listener !== callback,
+        (listener) => listener !== callback
       );
     };
   }, []);
@@ -958,7 +958,9 @@ function CreditsWindow({
             </ul>
             <Separator />
             <Button
-              onClick={() => window.open("https://github.com/YathishGP003/wingpt")}
+              onClick={() =>
+                window.open("https://github.com/YathishGP003/wingpt")
+              }
             >
               Source Code
             </Button>
